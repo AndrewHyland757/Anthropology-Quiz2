@@ -1,11 +1,11 @@
-// questions array
+// array of questions to be used in the quiz
 const questions = [{
     question: 'The earliest humans first appear in what epoch?',
     A: 'Oligocene',
     B: 'Paleocene',
     C: 'Miocene',
     D: 'Pliocene',
-    correct: 'C'
+    correct: 'Miocene'
 },
 {
     question: 'In most small-scale, non-industrial societies, social organization is based largely on.....?',
@@ -13,7 +13,7 @@ const questions = [{
     B: 'Education',
     C: 'Social class',
     D: 'Kinship affiliation',
-    correct: 'D'
+    correct: 'Kinship affiliation'
 },
 {
     question: "What is a ritual held at a certain point in a person's life to mark the end of one stage and the beginning of another called?",
@@ -21,7 +21,7 @@ const questions = [{
     B: 'Ceremony',
     C: 'Rite of passage',
     D: 'Sanction',
-    correct: 'C'
+    correct: 'Rite of passage'
 },
 {
     question: 'What is learned, and shared behaviors and beliefs?',
@@ -29,7 +29,7 @@ const questions = [{
     B: 'Food',
     C: 'Language',
     D: 'Enthnicity',
-    correct: 'A'
+    correct: 'Culture'
 },
 {
     question: 'What is the term for the process of creating a new culture by combining elements from different cultures?',
@@ -37,7 +37,7 @@ const questions = [{
     B: 'Globalization',
     C: 'Cultural appropriation',
     D: 'Cultural-hybridization',
-    correct: 'D'
+    correct: 'Cultural-hybridization'
 },
 {
     question: 'What animals did Jane Goodall study?',
@@ -45,15 +45,15 @@ const questions = [{
     B: 'Chimpanzees',
     C: 'Orangutans',
     D: 'Baboons',
-    correct: 'B'
+    correct: 'Chimpanzees'
 },
 {
     question: 'How many languages are currently spoken in the world?',
     A: 'Over 10,000',
     B: 'Around 1,000',
-    C: 'Around 7,000 ',
+    C: 'Around 7,000',
     D: 'Around 3,000',
-    correct: 'C'
+    correct: 'Around 7,000'
 },
 {
     question: 'What is the revolution from hunting and gathering to food production called?',
@@ -61,7 +61,7 @@ const questions = [{
     B: 'The Organic Revolution',
     C: 'The Neolithic Revolution',
     D: 'The Cultivation Revolution',
-    correct: 'C'
+    correct: 'The Neolithic Revolution'
 },
 {
     question: 'What did Jetro Tull invent?',
@@ -69,7 +69,7 @@ const questions = [{
     B: 'The seed drill',
     C: 'The spinning jenny',
     D: 'A rock band',
-    correct: 'B'
+    correct: 'The seed drill'
 },
 {
     question: 'The Sentinelese, a famous uncontacted tribe, can be found where?',
@@ -77,7 +77,7 @@ const questions = [{
     B: 'Senegal',
     C: 'The Amazon Rainforest',
     D: 'Papa New Guinea',
-    correct: 'A'
+    correct: 'The Andaman Islands'
 },
 {
     question: 'How many bones in the human body?',
@@ -85,7 +85,7 @@ const questions = [{
     B: '106',
     C: '706',
     D: '1,006',
-    correct: 'A'
+    correct: '206'
 },
 {
     question: 'Which of these events occurred first?',
@@ -93,7 +93,7 @@ const questions = [{
     B: 'The Industrial Revolution',
     C: 'The American Revolution',
     D: 'The Enlightenment',
-    correct : 'D'
+    correct : 'The Enlightenment'
 }
 ];
 
@@ -105,14 +105,73 @@ let currentOptionC = document.getElementById("choiceC");
 let currentOptionD = document.getElementById("choiceD");
 
 
+
+// Function to show the current question. The parameter "x" will be an index of the questions array.
 function displayQuestion(x){
-    current questions[x].question;
+    currentQuestion.textContent = questions[x].question;
 }
 
+// Function to show the current question options. The parameter "x" will be an index of the questions array.
 function displayOptions(x){
     currentOptionA.textContent = questions[x].A;
     currentOptionB.textContent = questions[x].B;
     currentOptionC.textContent = questions[x].C;
     currentOptionD.textContent = questions[x].D;
 }
+
+// A function to return the current answer
+function generateAnswer(x) {
+    return questions[x].correct;
+}
+
+// All the questions index numbers that have been  used will be put into this array. 
+let usedQuestions = [];
+
+// This is the number of questions the player starts with.
+let questionsRemaining = 10;
+
+/*
+// A function to return the current answer
+function generateAnswer(x) {
+    return questions[x].correct;
+
+
+function checkAnswer(){
+    if (playerChoice == currentAnswer(x)){
+}
+*/
+
+function answerButtonColorChange(x){
+    if (playerChoice == questions[x].correct){
+        buttons.style.backgroundColor = "rgb(106, 194, 105)"
+    }else{
+        buttons.style.backgroundColor = "rgb(210, 4, 45)"
+        
+    }
+
+}
+let buttons = getElementsByClassName("choice")
+buttons.addEventListener("click", answerButtonColorChange)
+
+function playGame(){
+
+    // Generates a randon number based on the amount of questions in the questions array
+     let y = Math.floor(Math.random() * questions.length)
+
+    /* Checks if the question has already been used and, if not, it shows the questions and its four options, 
+    adds the index number to the used question aray and decreases the questions remaining by one. */
+     if (usedQuestions.includes(y)){
+        playGame()
+     }else{
+        displayQuestion(y)
+        displayOptions(y)
+        usedQuestions.push(y)
+        questionsRemaining--
+     }
+     if (playerChoice == questions[y].correct){
+        
+     }
+}
+
+
 
