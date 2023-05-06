@@ -106,12 +106,15 @@ let currentOptionD = document.getElementById("choiceD");
 
 
 
-// Function to show the current question. The parameter "x" will be an index of the questions array.
+
+
+
+// Function to show the current question. The parameter "x" will be an index number of the questions array.
 function displayQuestion(x){
     currentQuestion.textContent = questions[x].question;
 }
 
-// Function to show the current question options. The parameter "x" will be an index of the questions array.
+// Function to show the current question options. The parameter "x" will be an index number of the questions array.
 function displayOptions(x){
     currentOptionA.textContent = questions[x].A;
     currentOptionB.textContent = questions[x].B;
@@ -120,7 +123,7 @@ function displayOptions(x){
 }
 
 // A function to return the current answer
-function generateAnswer(x) {
+function currentAnswer(x) {
     return questions[x].correct;
 }
 
@@ -148,8 +151,15 @@ function answerButtonColorChange(x){
         buttons.style.backgroundColor = "rgb(210, 4, 45)"
         
     }
-
 }
+
+let score = document.getElementById("progress");
+let scoreCorrect = 0;
+let scoreTotal = "/10"
+score.textContent = scoreCorrect + scoreTotal
+
+
+
 let buttons = getElementsByClassName("choice")
 buttons.addEventListener("click", answerButtonColorChange)
 
@@ -158,8 +168,8 @@ function playGame(){
     // Generates a randon number based on the amount of questions in the questions array
      let y = Math.floor(Math.random() * questions.length)
 
-    /* Checks if the question has already been used and, if not, it shows the questions and its four options, 
-    adds the index number to the used question aray and decreases the questions remaining by one. */
+    /* Checks if the question has already been used and, if not, it: shows the questions and its four options, 
+    adds the index number to the usedQuestions array and decreases the questionsRemaining by one. */
      if (usedQuestions.includes(y)){
         playGame()
      }else{
@@ -169,9 +179,13 @@ function playGame(){
         questionsRemaining--
      }
      if (playerChoice == questions[y].correct){
+
+     }
+     answerButtonColorChange(y)
+     
         
      }
-}
+
 
 
 
