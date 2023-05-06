@@ -1,98 +1,118 @@
 // questions array
 const questions = [{
     question: 'The earliest humans first appear in what epoch?',
-    choiceA: 'Oligocene',
-    choiceB: 'Paleocene',
-    choiceC: 'Miocene',
-    choiceD: 'Pliocene',
+    A: 'Oligocene',
+    B: 'Paleocene',
+    C: 'Miocene',
+    D: 'Pliocene',
     correct: 'C'
 },
 {
     question: 'In most small-scale, non-industrial societies, social organization is based largely on.....?',
-    choiceA: 'Occupation',
-    choiceB: 'Education',
-    choiceC: 'Social class',
-    choiceD: 'Kinship affiliation',
+    A: 'Occupation',
+    B: 'Education',
+    C: 'Social class',
+    D: 'Kinship affiliation',
     correct: 'D'
 },
 {
     question: "What is a ritual held at a certain point in a person's life to mark the end of one stage and the beginning of another called?",
-    choiceA: 'Quartering',
-    choiceB: 'Ceremony',
-    choiceC: 'Rite of passage',
-    choiceD: 'Sanction',
+    A: 'Quartering',
+    B: 'Ceremony',
+    C: 'Rite of passage',
+    D: 'Sanction',
     correct: 'C'
 },
 {
     question: 'What is learned, and shared behaviors and beliefs?',
-    choiceA: 'Culture',
-    choiceB: 'Food',
-    choiceC: 'Language',
-    choiceD: 'Enthnicity',
+    A: 'Culture',
+    B: 'Food',
+    C: 'Language',
+    D: 'Enthnicity',
     correct: 'A'
 },
 {
     question: 'What is the term for the process of creating a new culture by combining elements from different cultures?',
-    choiceA: 'Cultural fusion',
-    choiceB: 'Globalization',
-    choiceC: 'Cultural appropriation',
-    choiceD: 'Cultural-hybridization',
+    A: 'Cultural fusion',
+    B: 'Globalization',
+    C: 'Cultural appropriation',
+    D: 'Cultural-hybridization',
     correct: 'D'
 },
 {
     question: 'What animals did Jane Goodall study?',
-    choiceA: 'Gorillas',
-    choiceB: 'Chimpanzees',
-    choiceC: 'Orangutans',
-    choiceD: 'Baboons',
+    A: 'Gorillas',
+    B: 'Chimpanzees',
+    C: 'Orangutans',
+    D: 'Baboons',
     correct: 'B'
 },
 {
     question: 'How many languages are currently spoken in the world?',
-    choiceA: 'Over 10,000',
-    choiceB: 'Around 1,000',
-    choiceC: 'Around 7,000 ',
-    choiceD: 'Around 3,000',
+    A: 'Over 10,000',
+    B: 'Around 1,000',
+    C: 'Around 7,000 ',
+    D: 'Around 3,000',
     correct: 'C'
 },
 {
     question: 'What is the revolution from hunting and gathering to food production called?',
-    choiceA: 'The Pastoral Revolution',
-    choiceB: 'The Organic Revolution',
-    choiceC: 'The Neolithic Revolution',
-    choiceD: 'The Cultivation Revolution',
+    A: 'The Pastoral Revolution',
+    B: 'The Organic Revolution',
+    C: 'The Neolithic Revolution',
+    D: 'The Cultivation Revolution',
     correct: 'C'
 },
 {
     question: 'What did Jetro Tull invent?',
-    choiceA: 'The steam engine',
-    choiceB: 'The seed drill',
-    choiceC: 'The spinning jenny',
-    choiceD: 'A rock band',
+    A: 'The steam engine',
+    B: 'The seed drill',
+    C: 'The spinning jenny',
+    D: 'A rock band',
     correct: 'B'
 },
 {
     question: 'The Sentinelese, a famous uncontacted tribe, can be found where?',
-    choiceA: 'The Andaman Islands',
-    choiceB: 'Senegal',
-    choiceC: 'The Amazon Rainforest',
-    choiceD: 'Papa New Guinea',
+    A: 'The Andaman Islands',
+    B: 'Senegal',
+    C: 'The Amazon Rainforest',
+    D: 'Papa New Guinea',
     correct: 'A'
 },
 {
     question: 'How many bones in the human body?',
-    choiceA: '206',
-    choiceB: '106',
-    choiceC: '706',
-    choiceD: '1,006',
+    A: '206',
+    B: '106',
+    C: '706',
+    D: '1,006',
     correct: 'A'
 },
 {
     question: 'Which of these events occurred first?',
-    choiceA: 'The French Revolution',
-    choiceB: 'The Industrial Revolution',
-    choiceC: 'The American Revolution',
-    choiceD: 'The Enlightenment',
-    correct: 'D'
+    A: 'The French Revolution',
+    B: 'The Industrial Revolution',
+    C: 'The American Revolution',
+    D: 'The Enlightenment',
+    correct : 'D'
 }
 ];
+
+
+let currentQuestion = document.getElementById("question-text");
+let currentOptionA = document.getElementById("choiceA");
+let currentOptionB = document.getElementById("choiceB");
+let currentOptionC = document.getElementById("choiceC");
+let currentOptionD = document.getElementById("choiceD");
+
+
+function displayQuestion(x){
+    current questions[x].question;
+}
+
+function displayOptions(x){
+    currentOptionA.textContent = questions[x].A;
+    currentOptionB.textContent = questions[x].B;
+    currentOptionC.textContent = questions[x].C;
+    currentOptionD.textContent = questions[x].D;
+}
+
