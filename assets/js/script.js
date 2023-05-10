@@ -1,3 +1,5 @@
+
+
 // array of questions to be used in the quiz
 const questions = [{
     question: 'The earliest humans first appear in what epoch?',
@@ -5,7 +7,7 @@ const questions = [{
     B: 'Paleocene',
     C: 'Miocene',
     D: 'Pliocene',
-    correct: 'Miocene'
+    correct: "choiceC"
 },
 {
     question: 'In most small-scale, non-industrial societies, social organization is based largely on.....?',
@@ -13,7 +15,7 @@ const questions = [{
     B: 'Education',
     C: 'Social class',
     D: 'Kinship affiliation',
-    correct: 'Kinship affiliation'
+    correct: "choiceD"
 },
 {
     question: "What is a ritual held at a certain point in a person's life to mark the end of one stage and the beginning of another called?",
@@ -21,7 +23,7 @@ const questions = [{
     B: 'Ceremony',
     C: 'Rite of passage',
     D: 'Sanction',
-    correct: 'Rite of passage'
+    correct: "choiceC"
 },
 {
     question: 'What is learned, and shared behaviors and beliefs?',
@@ -29,7 +31,7 @@ const questions = [{
     B: 'Food',
     C: 'Language',
     D: 'Enthnicity',
-    correct: 'Culture'
+    correct: "choiceA"
 },
 {
     question: 'What is the term for the process of creating a new culture by combining elements from different cultures?',
@@ -37,7 +39,7 @@ const questions = [{
     B: 'Globalization',
     C: 'Cultural appropriation',
     D: 'Cultural-hybridization',
-    correct: 'Cultural-hybridization'
+    correct: "choiceD"
 },
 {
     question: 'What animals did Jane Goodall study?',
@@ -45,7 +47,7 @@ const questions = [{
     B: 'Chimpanzees',
     C: 'Orangutans',
     D: 'Baboons',
-    correct: 'Chimpanzees'
+    correct: "choiceB"
 },
 {
     question: 'How many languages are currently spoken in the world?',
@@ -53,7 +55,7 @@ const questions = [{
     B: 'Around 1,000',
     C: 'Around 7,000',
     D: 'Around 3,000',
-    correct: 'Around 7,000'
+    correct: "choiceC"
 },
 {
     question: 'What is the revolution from hunting and gathering to food production called?',
@@ -61,7 +63,7 @@ const questions = [{
     B: 'The Organic Revolution',
     C: 'The Neolithic Revolution',
     D: 'The Cultivation Revolution',
-    correct: 'The Neolithic Revolution'
+    correct: "choiceC"
 },
 {
     question: 'What did Jetro Tull invent?',
@@ -69,7 +71,7 @@ const questions = [{
     B: 'The seed drill',
     C: 'The spinning jenny',
     D: 'A rock band',
-    correct: 'The seed drill'
+    correct: "choiceB"
 },
 {
     question: 'The Sentinelese, a famous uncontacted tribe, can be found where?',
@@ -77,7 +79,7 @@ const questions = [{
     B: 'Senegal',
     C: 'The Amazon Rainforest',
     D: 'Papa New Guinea',
-    correct: 'The Andaman Islands'
+    correct: "choiceA"
 },
 {
     question: 'How many bones in the human body?',
@@ -85,7 +87,7 @@ const questions = [{
     B: '106',
     C: '706',
     D: '1,006',
-    correct: '206'
+    correct: "choiceA"
 },
 {
     question: 'Which of these events occurred first?',
@@ -93,22 +95,104 @@ const questions = [{
     B: 'The Industrial Revolution',
     C: 'The American Revolution',
     D: 'The Enlightenment',
-    correct : 'The Enlightenment'
+    correct : "choiceD"
 }
 ];
 
+const currentQuestion = document.getElementById("question-text");
+const currentOptionA = document.getElementById("choiceA");
+const currentOptionB = document.getElementById("choiceB");
+const currentOptionC = document.getElementById("choiceC");
+const currentOptionD = document.getElementById("choiceD");
+const score = document.getElementById("score-container");
+const buttons = document.getElementsByTagName("button")
+const scoreTotal = "/10";
 
-let currentQuestion = document.getElementById("question-text");
-let currentOptionA = document.getElementById("choiceA");
-let currentOptionB = document.getElementById("choiceB");
-let currentOptionC = document.getElementById("choiceC");
-let currentOptionD = document.getElementById("choiceD");
+// Sets the score and updates after each question
+let scoreCorrect = 0;
+
+score.textContent =  scoreCorrect + scoreTotal
+
+
+// The number of questions the player starts with.
+let questionsRemaining = 0;
+
+
+
+// All the questions index numbers that have been  used will be put into this array. 
+let usedQuestions = [];
+let currentIndex
+
+
+
+function startGame(){
+
+    questionsRemaining = 10
+    
+    usedQuestions = []
+    getNewQuestion()
+}
+
+function getNewQuestion(){
+    currentIndex = Math.floor(Math.random() * questions.length)
+    
+    if (usedQuestions.includes(currentIndex)){
+        getNewQuestion()
+    }else{
+    usedQuestions.push(currentIndex)
+    questionsRemaining--
+    
+    currentQuestion.textContent = questions[currentIndex].question;
+    currentOptionA.textContent = questions[currentIndex].A;
+    currentOptionB.textContent = questions[currentIndex].B;
+    currentOptionC.textContent = questions[currentIndex].C;
+    currentOptionD.textContent = questions[currentIndex].D;
+
+}
 
 
 
 
 
 
+
+}
+
+
+
+
+
+
+function checkAnswer(clickedAnswer){
+    
+    if (clickedAnswer.id == questions[currentIndex].correct){
+        console.log('Correct')
+         
+         clickedAnswer.style.backgroundColor = "rgb(106, 194, 105)"
+         clickedAnswer.style.color = "rgb(0,0,0)"
+        scoreCorrect++
+       getNewQuestion()
+        
+    }else{
+        
+        clickedAnswer.style.backgroundColor = "rgb(210, 4, 45)"
+        clickedAnswer.style.color = "rgb(0,0,0)"
+       
+        console.log("Incorrect")
+       getNewQuestion()
+    }
+}
+
+
+
+
+
+
+
+
+
+startGame()
+/*
 // Function to show the current question. The parameter "x" will be an index number of the questions array.
 function displayQuestion(x){
     currentQuestion.textContent = questions[x].question;
@@ -122,70 +206,146 @@ function displayOptions(x){
     currentOptionD.textContent = questions[x].D;
 }
 
-// A function to return the current answer
-function currentAnswer(x) {
-    return questions[x].correct;
-}
-
-// All the questions index numbers that have been  used will be put into this array. 
-let usedQuestions = [];
-
-// This is the number of questions the player starts with.
-let questionsRemaining = 10;
-
-/*
-// A function to return the current answer
-function generateAnswer(x) {
-    return questions[x].correct;
-
-
-function checkAnswer(){
-    if (playerChoice == currentAnswer(x)){
-}
-*/
-
-function answerButtonColorChange(x){
-    if (playerChoice == questions[x].correct){
-        buttons.style.backgroundColor = "rgb(106, 194, 105)"
-    }else{
-        buttons.style.backgroundColor = "rgb(210, 4, 45)"
-        
-    }
-}
-
-let score = document.getElementById("progress");
-let scoreCorrect = 0;
-let scoreTotal = "/10"
-score.textContent = scoreCorrect + scoreTotal
-
-
-
-let buttons = getElementsByClassName("choice")
-buttons.addEventListener("click", answerButtonColorChange)
 
 function playGame(){
 
-    // Generates a randon number based on the amount of questions in the questions array
-     let y = Math.floor(Math.random() * questions.length)
 
-    /* Checks if the question has already been used and, if not, it: shows the questions and its four options, 
-    adds the index number to the usedQuestions array and decreases the questionsRemaining by one. */
-     if (usedQuestions.includes(y)){
+//Checks if the question has already been used and, if not, it: shows the questions and its four options, 
+//adds the index number to the usedQuestions array and decreases the questionsRemaining by one. 
+    if (usedQuestions.includes(currentIndex)){
         playGame()
      }else{
-        displayQuestion(y)
-        displayOptions(y)
-        usedQuestions.push(y)
-        questionsRemaining--
+        displayQuestion(currentIndex)
+        displayOptions(currentIndex)
+        usedQuestions.push(currentIndex)
+        questionsRemaining --
      }
-     if (playerChoice == questions[y].correct){
 
-     }
-     answerButtonColorChange(y)
-     
+
+}
+
+
+
+
+
+
+function checkAnswer(clickedAnswer){
+    if (clickedAnswer.id == questions[currentIndex].correct){
+        console.log('Correct')
+         //nextQuestiion()
+         clickedAnswer.style.backgroundColor = "rgb(106, 194, 105)"
+         clickedAnswer.style.color = "rgb(0,0,0)"
+        scoreCorrect +1
+       
         
-     }
+    }else{
+        // nextQuestiion()
+        clickedAnswer.style.backgroundColor = "rgb(210, 4, 45)"
+        clickedAnswer.style.color = "rgb(0,0,0)"
+       
+        console.log("Incorrect")
+       
+    }
+}
+/*
+
+// next question 
+function nextQuestiion(){
+    if (questionsRemaining > 0){
+    currentIndex = Math.floor(Math.random() * questions.length)
+    playGame()
+}
+}
+*/
+//playGame()
+
+//nextQuestiion()
+
+
+
+/*
+while ( questionsRemaining > 0){
+    playGame()
+}
+*/
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+let currentQuestion = {};
+let acceptingAnswer = false;
+let score = 0;
+let usedQuestions = [];
+let questionCounter = 0;
+
+const maxQuestions = 10;
+
+
+
+
+
+
+
+function startGame(){
+    questionCounter = 0;
+    score = 0;
+    usedQuestions = [];
+    getNewQuestion()
+}
+
+function getNewQuestion(){
+    
+    const questionIndex = Math.floor(Math.random() * questions.length)
+
+    if (usedQuestions.includes(questionIndex)){
+        getNewQuestion()
+    }else{
+    usedQuestions.push(questionIndex)
+    questionCounter++
+    
+    question.textContent = questions[questionIndex].question;
+    currentOptionA.textContent = questions[questionIndex].A;
+    currentOptionB.textContent = questions[questionIndex].B;
+    currentOptionC.textContent = questions[questionIndex].C;
+    currentOptionD.textContent = questions[questionIndex].D;
+    }
+
+    
+    
+    
+    buttons.addEventListener("click", function() {
+        this.style.backgroundColor = "red";
+        console.log("works")
+      });
+
+
+
+
+
+    }
+
+    
+buttons.forEach
+
+    
+
+
+    startGame()
+
+
+    
+
+*/
