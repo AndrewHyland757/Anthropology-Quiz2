@@ -105,23 +105,51 @@ const currentOptionB = document.getElementById("choiceB");
 const currentOptionC = document.getElementById("choiceC");
 const currentOptionD = document.getElementById("choiceD");
 let score = document.getElementById("score-container");
-const buttons = document.getElementsByTagName("button")
+const buttons = document.getElementsByTagName("choice")
 const scoreTotal = "/10";
+const timeGauge = document.getElementById("timeGauge");
+
+let count = 0;
+const questionTime = 20; // 20s
+const gaugeWidth = 300; // 300px
+const gaugeUnit = gaugeWidth / questionTime;
+let TIMER;
+
+
+
+
 
 // Sets the score and updates after each question
 //let scoreCorrect = 0;
 let correctScore = 0
-
-
+score.textContent =  correctScore + scoreTotal
 
 // The number of questions the player starts with.
 let questionsRemaining = 0;
 
-
+//buttons//.style.backgroundColor ="rgb(106, 194, 105)"
 
 // All the questions index numbers that have been  used will be put into this array. 
 let usedQuestions = [];
 let currentIndex
+
+
+function showCounter() {
+    if (count <= questionTime) {
+
+        timeGauge.style.width = count * gaugeUnit + "px";
+        count++
+    } 
+    if (count > questionTime){
+        clearInterval(TIMER)
+        count = 0
+        getNewQuestion()
+        questionsRemaining--
+    }
+}
+
+
+
 
 
 
@@ -134,11 +162,17 @@ function startGame(){
 }
 
 function getNewQuestion(){
+    //buttons.style.backgroundColor = "rgb(255,255,255)"
+    
     currentIndex = Math.floor(Math.random() * questions.length)
     
     if (usedQuestions.includes(currentIndex)){
         getNewQuestion()
     }else{
+        
+        TIMER = setInterval(showCounter, 1000);
+   
+        
     usedQuestions.push(currentIndex)
     questionsRemaining--
     
@@ -160,16 +194,22 @@ function checkAnswer(clickedAnswer){
         score.textContent =  correctScore + scoreTotal
          clickedAnswer.style.backgroundColor = "rgb(106, 194, 105)"
          clickedAnswer.style.color = "rgb(0,0,0)"
-        
-       getNewQuestion()
+         clearInterval(TIMER)
+        count = 0
+         setTimeout(getNewQuestion, 1000)
         
     }else{
         
         clickedAnswer.style.backgroundColor = "rgb(210, 4, 45)"
         clickedAnswer.style.color = "rgb(0,0,0)"
-       
+        clearInterval(TIMER)
+       count = 0
         console.log("Incorrect")
-       getNewQuestion()
+        
+        setTimeout(getNewQuestion, 1000)
+            
+        
+    
     }
 }
 
