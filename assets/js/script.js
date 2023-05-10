@@ -104,14 +104,14 @@ const currentOptionA = document.getElementById("choiceA");
 const currentOptionB = document.getElementById("choiceB");
 const currentOptionC = document.getElementById("choiceC");
 const currentOptionD = document.getElementById("choiceD");
-const score = document.getElementById("score-container");
+let score = document.getElementById("score-container");
 const buttons = document.getElementsByTagName("button")
 const scoreTotal = "/10";
 
 // Sets the score and updates after each question
-let scoreCorrect = 0;
+//let scoreCorrect = 0;
+let correctScore = 0
 
-score.textContent =  scoreCorrect + scoreTotal
 
 
 // The number of questions the player starts with.
@@ -149,28 +149,18 @@ function getNewQuestion(){
     currentOptionD.textContent = questions[currentIndex].D;
 
 }
-
-
-
-
-
-
-
 }
-
-
-
-
 
 
 function checkAnswer(clickedAnswer){
     
     if (clickedAnswer.id == questions[currentIndex].correct){
         console.log('Correct')
-         
+        correctScore ++ 
+        score.textContent =  correctScore + scoreTotal
          clickedAnswer.style.backgroundColor = "rgb(106, 194, 105)"
          clickedAnswer.style.color = "rgb(0,0,0)"
-        scoreCorrect++
+        
        getNewQuestion()
         
     }else{
