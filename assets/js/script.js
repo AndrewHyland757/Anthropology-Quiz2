@@ -104,8 +104,9 @@ const currentOptionA = document.getElementById("choiceA");
 const currentOptionB = document.getElementById("choiceB");
 const currentOptionC = document.getElementById("choiceC");
 const currentOptionD = document.getElementById("choiceD");
-let score = document.getElementById("score-container");
-const buttons = document.getElementsByTagName("choice")
+//let score = document.getElementById("score-container");
+const progress = document.getElementById("progress");
+const buttons = document.getElementsByTagName("button")
 const scoreTotal = "/10";
 const timeGauge = document.getElementById("timeGauge");
 
@@ -117,12 +118,15 @@ let TIMER;
 
 
 
-
+/*
 
 // Sets the score and updates after each question
 //let scoreCorrect = 0;
 let correctScore = 0
 score.textContent =  correctScore + scoreTotal
+
+*/
+
 
 // The number of questions the player starts with.
 let questionsRemaining = 0;
@@ -134,9 +138,17 @@ let usedQuestions = [];
 let currentIndex
 
 
+function resetButtonColor(){
+    currentOptionA.style.backgroundColor = "rgb(255,255,255)"
+    currentOptionB.style.backgroundColor = "rgb(255,255,255)"
+    currentOptionC.style.backgroundColor = "rgb(255,255,255)"
+    currentOptionD.style.backgroundColor = "rgb(255,255,255)"
+}
+
+
+
 function showCounter() {
     if (count <= questionTime) {
-
         timeGauge.style.width = count * gaugeUnit + "px";
         count++
     } 
@@ -148,9 +160,17 @@ function showCounter() {
     }
 }
 
-
-
-
+/*
+function showProgress() {
+    for (let qIndex = 0; qIndex <= 10; qIndex++) {
+        progress.innerHTML += "<div class='prog'></div>";
+    }
+}
+*/
+ function buttonAnswerColor(button, backgroundColor, fontColor){
+    button.style.backgroundColor =  backgroundColor                  
+    button.style.color = fontColor                            
+ }
 
 
 function startGame(){
@@ -158,14 +178,14 @@ function startGame(){
     questionsRemaining = 10
     
     usedQuestions = []
+    //showProgress()
     getNewQuestion()
 }
 
 function getNewQuestion(){
-    //buttons.style.backgroundColor = "rgb(255,255,255)"
-    
+    //buttonAnswerColor(buttons,"rgb(255,255,255)", "rgb(0,0,0)" )
     currentIndex = Math.floor(Math.random() * questions.length)
-    
+    resetButtonColor()
     if (usedQuestions.includes(currentIndex)){
         getNewQuestion()
     }else{
@@ -190,27 +210,20 @@ function checkAnswer(clickedAnswer){
     
     if (clickedAnswer.id == questions[currentIndex].correct){
         console.log('Correct')
-        correctScore ++ 
-        score.textContent =  correctScore + scoreTotal
-         clickedAnswer.style.backgroundColor = "rgb(106, 194, 105)"
-         clickedAnswer.style.color = "rgb(0,0,0)"
-         clearInterval(TIMER)
+        //correctScore ++ 
+        //score.textContent =  correctScore + scoreTotal
+        buttonAnswerColor(clickedAnswer, "rgb(106, 194, 105)",  "rgb(0,0,0)")
+        clearInterval(TIMER)
         count = 0
-         setTimeout(getNewQuestion, 1000)
+        setTimeout(getNewQuestion, 750)
         
     }else{
-        
-        clickedAnswer.style.backgroundColor = "rgb(210, 4, 45)"
-        clickedAnswer.style.color = "rgb(0,0,0)"
+       buttonAnswerColor(clickedAnswer,"rgb(210, 4, 45)", "rgb(0,0,0)" )
         clearInterval(TIMER)
-       count = 0
+        count = 0
         console.log("Incorrect")
-        
-        setTimeout(getNewQuestion, 1000)
-            
-        
-    
-    }
+        setTimeout(getNewQuestion, 750)
+        }
 }
 
 
