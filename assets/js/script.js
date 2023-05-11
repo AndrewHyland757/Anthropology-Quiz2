@@ -99,6 +99,8 @@ const questions = [{
 }
 ];
 
+const start = document.getElementById("start");
+const quiz = document.getElementById("quiz-container");
 const currentQuestion = document.getElementById("question-text");
 const currentOptionA = document.getElementById("choiceA");
 const currentOptionB = document.getElementById("choiceB");
@@ -174,18 +176,18 @@ function showProgress() {
 
 
 function startGame(){
-
     questionsRemaining = 10
-    
     usedQuestions = []
     //showProgress()
+    start.classList.add("hide");
+    quiz.classList.remove("hide");
     getNewQuestion()
 }
 
 function getNewQuestion(){
-    //buttonAnswerColor(buttons,"rgb(255,255,255)", "rgb(0,0,0)" )
-    currentIndex = Math.floor(Math.random() * questions.length)
     resetButtonColor()
+    currentIndex = Math.floor(Math.random() * questions.length)
+    
     if (usedQuestions.includes(currentIndex)){
         getNewQuestion()
     }else{
@@ -233,8 +235,8 @@ function checkAnswer(clickedAnswer){
 
 
 
+start.addEventListener("click", startGame);
 
-startGame()
 /*
 // Function to show the current question. The parameter "x" will be an index number of the questions array.
 function displayQuestion(x){
