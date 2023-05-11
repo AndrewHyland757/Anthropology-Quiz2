@@ -1,7 +1,8 @@
 
 
-// array of questions to be used in the quiz
-const questions = [{
+// Array of questions to be used in the quiz
+const questions = [
+{
     question: 'The earliest humans first appear in what epoch?',
     A: 'Oligocene',
     B: 'Paleocene',
@@ -55,7 +56,72 @@ const questions = [{
     B: 'Around 1,000',
     C: 'Around 7,000',
     D: 'Around 3,000',
-    correct: "choiceC"
+    correct: 'choiceC'
+},
+
+{
+    question: 'What do we call the study of non-human primates?',
+    A: 'Zoology',
+    B: 'Primatology',
+    C: 'Entomology',
+    D: 'Anthropology',
+    correct: 'choiceB'
+},
+{
+    question: "What is the term used to describe the process of learning one's culture as a child?",
+    A: 'Enculturation',
+    B: 'Acculturation',
+    C: 'Assimilation',
+    D: 'Adaptation',
+    correct: 'choiceA'
+},
+{
+    question: 'A a society without a centralized government is caleed a(n)....?',
+    A: 'Anarchy',
+    B: 'Democracy',
+    C: 'Monarchy',
+    D: 'Republic',
+    correct: 'choiceA'
+},
+{
+    question: 'What is the term used to describe a society where descent is traced through the female line?',
+    A: 'Unilineal',
+    B: 'Patrilineal',
+    C: 'Bilateral',
+    D: 'Matrilineal',
+    correct: 'choiceD'
+},
+{
+    question: 'What is the term used to describe a type of economic system where goods and services are traded without the use of money?',
+    A: 'Capitalism',
+    B: 'Communism',
+    C: 'Market economy',
+    D: 'Barter economy',
+    correct: 'choiceD'
+},
+{
+    question: 'Which of the following is NOT considered a factor that influences cultural change?',
+    A: 'Technology',
+    B: 'Globalization',
+    C: 'Climate',
+    D: 'Religion',
+    correct: 'choiceC'
+},
+{
+    question: 'What is the term used to describe a system of social stratification where status is determined by birth?',
+    A: 'Meritocracy',
+    B: 'Caste system',
+    C: 'Feudalism',
+    D: 'Democracy',
+    correct: 'choiceB'
+},
+{
+    question: 'Which of the following is NOT considered a type of marriage?',
+    A: 'Monogamy',
+    B: 'Polygamy',
+    C: 'Endogamy',
+    D: 'Heterogamy',
+    correct: 'choiceD'
 },
 {
     question: 'What is the revolution from hunting and gathering to food production called?',
@@ -96,6 +162,119 @@ const questions = [{
     C: 'The American Revolution',
     D: 'The Enlightenment',
     correct : "choiceD"
+},
+{
+    question: 'What do we call the study of ancient human remains?',
+    A: 'Paleontology',
+    B: 'Anthropology',
+    C: 'Archaeology',
+    D: 'Forensics',
+    correct: 'choiceC'
+},
+{
+    question: 'What is the nickname for the earliest stone tools made by our ancestors?',
+    A: 'Pebble gadgets',
+    B: 'Rock-a-doodle-dos',
+    C: 'Flintstones',
+    D: 'Oldowan tools',
+    correct: 'choiceD'
+},
+
+{
+    question: 'What do we call the study of language and its structure?',
+    A: 'Linguistics',
+    B: 'Polyglotology',
+    C: 'Lexiconomy',
+    D: 'Verbalism',
+    correct: 'choiceA'
+},
+{
+    question: 'A belief system that worships nature and natural phenomena is called....?',
+    A: 'Animism',
+    B: 'Zoolatry',
+    C: 'Botanology',
+    D: 'Elementalism',
+    correct: 'choiceA'
+},
+{
+    question: 'When different groups come into firsthand contact, the exchange of cultural is called...? ',
+    A: 'Multiculturalism',
+    B: 'Cultural diffusion',
+    C: 'Melting pot',
+    D: 'Cultural exchange',
+    correct: 'choiceB'
+},
+{
+    question: 'Who proposed the theory of natural selection as a mechanism for evolution?',
+    A: 'Sigmund Freud',
+    B: 'Marie Curie',
+    C: 'Charles Darwin',
+    D: 'Isaac Newton',
+    correct: 'choiceC'
+},
+{
+    question: 'What is the name for a cultural feature that is passed from one generation to another?',
+    A: 'Genotype',
+    B: 'Artefact',
+    C: 'Meme',
+    D: 'Allele',
+    correct: 'choiceC'
+},
+{
+    question: 'Which of the following is NOT a primate?',
+    A: 'Mandrill',
+    B: 'Lemur',
+    C: 'Ape',
+    D: 'Iguana',
+    correct: 'choiceD'
+},
+{
+    question: 'What do we call the process of exchanging gifts between groups?',
+    A: 'Bartering',
+    B: 'Reciprocity',
+    C: 'Trade',
+    D: 'Bargaining',
+    correct: 'choiceB'
+},   
+{
+    question: 'Which of the following is NOT a famous archaeological site?',
+    A: 'Machu Picchu',
+    B: 'Newgrange',
+    C: 'Great Wall of China',
+    D: 'Pompeii',
+    correct: 'choiceC'
+},
+{
+    question: "What is the term for the practice of marrying within one's own local social or cultural group?",
+    A: 'Exogamy',
+    B: 'Polygamy',
+    C: 'Homogamy',
+    D: 'Endogamy',
+    correct: 'choiceD'
+},
+{
+    question: 'Who is famous for discovering the tomb of Tutankhamun in Egypt?',
+    A: 'Mary Leakey',
+    B: 'Michael Davitt',
+    C: 'Howard Carter',
+    D: 'Zahi Hawass',
+    correct: 'choiceC'
+},
+{
+    question: 'What is the ancient Irish alphabet called?',
+    A: 'Cherokee',
+    B: 'Hieroglyphs',
+    C: 'Ogham',
+    D: "N'Ko",
+    correct: 'choiceC'
+},
+{
+    question: 'The Americas before European colonization is refered to as ...',
+    A: 'The Aztec era',
+    B: 'The Pre-Columbian era',
+    C: 'The Indian era',
+    D: 'The Pre-America era',
+    correct: 'choiceB'
 }
 ];
 
@@ -111,7 +290,9 @@ const progress = document.getElementById("progress");
 const buttons = document.getElementsByTagName("button")
 const scoreTotal = "/10";
 const timeGauge = document.getElementById("timeGauge");
+const scoreDiv = document.getElementById("scoreContainer");
 
+let scoreMessage = ""
 let count = 0;
 const questionTime = 20; // 20s
 const gaugeWidth = 300; // 300px
@@ -119,11 +300,11 @@ const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
 
 
-
+let scoreCorrect = 0;
 /*
 
 // Sets the score and updates after each question
-//let scoreCorrect = 0;
+
 let correctScore = 0
 score.textContent =  correctScore + scoreTotal
 
@@ -139,7 +320,7 @@ let questionsRemaining = 0;
 let usedQuestions = [];
 let currentIndex
 
-
+// Functiion to change the selected button back to a white background after being clicked
 function resetButtonColor(){
     currentOptionA.style.backgroundColor = "rgb(255,255,255)"
     currentOptionB.style.backgroundColor = "rgb(255,255,255)"
@@ -149,18 +330,21 @@ function resetButtonColor(){
 
 
 
-function showCounter() {
+function showCounter() {                                // count less that 20s
     if (count <= questionTime) {
-        timeGauge.style.width = count * gaugeUnit + "px";
-        count++
+        timeGauge.style.width = count * gaugeUnit + "px"; // increment  bar
+        count++                                            // increment count
     } 
     if (count > questionTime){
-        clearInterval(TIMER)
-        count = 0
-        getNewQuestion()
         questionsRemaining--
+        if (questionsRemaining = 0){
+        getNewQuestion()
+        }else{
+         scoreRender()
+       }
     }
 }
+
 
 /*
 function showProgress() {
@@ -169,6 +353,8 @@ function showProgress() {
     }
 }
 */
+
+// Function to change the button color
  function buttonAnswerColor(button, backgroundColor, fontColor){
     button.style.backgroundColor =  backgroundColor                  
     button.style.color = fontColor                            
@@ -178,6 +364,7 @@ function showProgress() {
 function startGame(){
     questionsRemaining = 10
     usedQuestions = []
+    scoreCorrect = 0
     //showProgress()
     start.classList.add("hide");
     quiz.classList.remove("hide");
@@ -185,7 +372,10 @@ function startGame(){
 }
 
 function getNewQuestion(){
+    //timeGauge.style.width
     resetButtonColor()
+    clearInterval(TIMER)
+        count = 0
     currentIndex = Math.floor(Math.random() * questions.length)
     
     if (usedQuestions.includes(currentIndex)){
@@ -212,24 +402,56 @@ function checkAnswer(clickedAnswer){
     
     if (clickedAnswer.id == questions[currentIndex].correct){
         console.log('Correct')
-        //correctScore ++ 
+        scoreCorrect ++ 
         //score.textContent =  correctScore + scoreTotal
         buttonAnswerColor(clickedAnswer, "rgb(106, 194, 105)",  "rgb(0,0,0)")
-        clearInterval(TIMER)
-        count = 0
+        //clearInterval(TIMER)
+        //count = 0
+        if (questionsRemaining > 0){
         setTimeout(getNewQuestion, 750)
-        
+        }else{
+            scoreRender()
+        }
+
     }else{
        buttonAnswerColor(clickedAnswer,"rgb(210, 4, 45)", "rgb(0,0,0)" )
-        clearInterval(TIMER)
-        count = 0
+       
+        //clearInterval(TIMER)
+        //count = 0
         console.log("Incorrect")
-        setTimeout(getNewQuestion, 750)
+        if (questionsRemaining > 0){
+            setTimeout(getNewQuestion, 750)
+            }else{
+                scoreRender()
+            }
         }
 }
 
 
+function scoreRender(){
+    quiz.classList.add("hide");
+    scoreDiv.style.display = "block";
+    // calculate the amount of question percent answered by the user
+    const scorePerCent =  scoreCorrect * 10
 
+
+    
+                if (scorePerCent >= 80){
+                    scoreMessage = "Excelent!"
+                }else if (scorePerCent >= 60){
+                    scoreMessage = "Nice try!"
+                }else if (scorePerCent >= 40){
+                    scoreMessage =  "Oh well!"
+                }else {
+                    scoreMessage = "Better luck next time!"
+                }
+
+                
+
+                
+                
+    scoreDiv.innerHTML += "<p>Your score is "+ scorePerCent +"%.<br>" + scoreMessage +"</p>";
+}
 
 
 
