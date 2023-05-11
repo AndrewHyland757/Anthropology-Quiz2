@@ -1,6 +1,4 @@
-
-
-// Array of questions to be used in the quiz
+// array of questions to be used in the quiz
 const questions = [
 {
     question: 'The earliest humans first appear in what epoch?',
@@ -285,67 +283,63 @@ const currentOptionA = document.getElementById("choiceA");
 const currentOptionB = document.getElementById("choiceB");
 const currentOptionC = document.getElementById("choiceC");
 const currentOptionD = document.getElementById("choiceD");
-//let score = document.getElementById("score-container");
 const progress = document.getElementById("progress");
 const buttons = document.getElementsByTagName("button")
-const scoreTotal = "/10";
 const timeGauge = document.getElementById("timeGauge");
 const scoreDiv = document.getElementById("scoreContainer");
 
-let scoreMessage = ""
+let scoreMessage = "";
 let count = 0;
-const questionTime = 20; // 20s
-const gaugeWidth = 300; // 300px
-const gaugeUnit = gaugeWidth / questionTime;
-let TIMER;
-
-
 let scoreCorrect = 0;
-/*
-
-// Sets the score and updates after each question
-
-let correctScore = 0
-score.textContent =  correctScore + scoreTotal
-
-*/
 
 
 // The number of questions the player starts with.
 let questionsRemaining = 0;
 
-//buttons//.style.backgroundColor ="rgb(106, 194, 105)"
-
-// All the questions index numbers that have been  used will be put into this array. 
+// all the questions index numbers that have been used will be put into this array. 
 let usedQuestions = [];
-let currentIndex
 
-// Functiion to change the selected button back to a white background after being clicked
+// function to change the button color
+function buttonAnswerColor(button, backgroundColor, fontColor){
+    button.style.backgroundColor =  backgroundColor;             
+    button.style.color = fontColor;                           
+ }
+// function to change the selected button back to a white background after being clicked
 function resetButtonColor(){
-    currentOptionA.style.backgroundColor = "rgb(255,255,255)"
-    currentOptionB.style.backgroundColor = "rgb(255,255,255)"
-    currentOptionC.style.backgroundColor = "rgb(255,255,255)"
-    currentOptionD.style.backgroundColor = "rgb(255,255,255)"
+    currentOptionA.style.backgroundColor = "rgb(255,255,255)";
+    currentOptionB.style.backgroundColor = "rgb(255,255,255)";
+    currentOptionC.style.backgroundColor = "rgb(255,255,255)";
+    currentOptionD.style.backgroundColor = "rgb(255,255,255)";
 }
 
+// set question time and display the time guage
+const questionTime = 30; 
+const gaugeWidth = 300; 
+const gaugeUnit = gaugeWidth / questionTime;
+let TIMER;
 
-
-function showCounter() {                                // count less that 20s
-    if (count <= questionTime) {
-        timeGauge.style.width = count * gaugeUnit + "px"; // increment  bar
-        count++                                            // increment count
-    } 
-    if (count > questionTime){
-        questionsRemaining--
+function showCounter() {   
+    // if the counter is less than the question time (30 seconds)                            
+    if (count <= questionTime){
+        // increase time guage by one unit
+        timeGauge.style.width = count * gaugeUnit + "px"; 
+        // increment the counter by 1
+        count++  
+    // if time runs out                                          
+    } else{
+        // decrease the questions remainng
+        questionsRemaining--;
+        // checks if there are questions left
         if (questionsRemaining = 0){
-        getNewQuestion()
+            // if not, show the score
+            scoreRender();
         }else{
-         scoreRender()
+            // if so, show new question
+            getNewQuestion();
        }
     }
 }
-
-
+ 
 /*
 function showProgress() {
     for (let qIndex = 0; qIndex <= 10; qIndex++) {
@@ -353,266 +347,108 @@ function showProgress() {
     }
 }
 */
-
-// Function to change the button color
- function buttonAnswerColor(button, backgroundColor, fontColor){
-    button.style.backgroundColor =  backgroundColor                  
-    button.style.color = fontColor                            
- }
-
-
+// function to start hte game and display the first queation
 function startGame(){
-    questionsRemaining = 10
-    usedQuestions = []
-    scoreCorrect = 0
-    //showProgress()
+    // removes the start button
     start.classList.add("hide");
+    // reveals the question and answer elements
     quiz.classList.remove("hide");
-    getNewQuestion()
+    // sets the amount of questions in the quiz
+    questionsRemaining = 10;
+    // array of used index numbers
+    usedQuestions = [];
+    // sets the score
+    scoreCorrect = 0;
+    // calls the new question
+    getNewQuestion();
 }
 
+// function to generate a new question
 function getNewQuestion(){
-    //timeGauge.style.width
-    resetButtonColor()
-    clearInterval(TIMER)
-        count = 0
-    currentIndex = Math.floor(Math.random() * questions.length)
-    
+    // button color is reset
+    resetButtonColor();
+    // time guage is reset
+    clearInterval(TIMER);
+    // generate a random number to apply to the questions array
+    currentIndex = Math.floor(Math.random() * questions.length);
+    // checks the number has not been used before
     if (usedQuestions.includes(currentIndex)){
-        getNewQuestion()
+        // if so, goes back to generate a new question
+        getNewQuestion();
+    // if the number has not been used
     }else{
-        
-        TIMER = setInterval(showCounter, 1000);
-   
-        
-    usedQuestions.push(currentIndex)
-    questionsRemaining--
-    
+    // sets the time guage
+    TIMER = setInterval(showCounter, 1000);
+    // adds the current  question index  to the usedQuestions array
+    usedQuestions.push(currentIndex);
+    // decreases the remaining questions by one
+    questionsRemaining--;
+    // displays the current question and answer options using the randomally generated index
     currentQuestion.textContent = questions[currentIndex].question;
     currentOptionA.textContent = questions[currentIndex].A;
     currentOptionB.textContent = questions[currentIndex].B;
     currentOptionC.textContent = questions[currentIndex].C;
     currentOptionD.textContent = questions[currentIndex].D;
-
+    }
 }
-}
 
-
+// function to check if answer is correct or not
 function checkAnswer(clickedAnswer){
-    
+    // if  answer is correct
     if (clickedAnswer.id == questions[currentIndex].correct){
-        console.log('Correct')
-        scoreCorrect ++ 
-        //score.textContent =  correctScore + scoreTotal
-        buttonAnswerColor(clickedAnswer, "rgb(106, 194, 105)",  "rgb(0,0,0)")
-        //clearInterval(TIMER)
-        //count = 0
+        // increase score by 1
+        scoreCorrect ++ ;
+        // button changes to green
+        buttonAnswerColor(clickedAnswer, "rgb(106, 194, 105)",  "rgb(0,0,0)");
+        // reset count
+        count = 0;
+        // checks if there are remaining questions left 
         if (questionsRemaining > 0){
-        setTimeout(getNewQuestion, 750)
+        // get new questiono after 1 second wait
+        setTimeout(getNewQuestion, 1000);
+        // if not displays score   
         }else{
-            scoreRender()
+        scoreRender();
         }
-
+    // if answer is not correct
     }else{
-       buttonAnswerColor(clickedAnswer,"rgb(210, 4, 45)", "rgb(0,0,0)" )
-       
-        //clearInterval(TIMER)
-        //count = 0
-        console.log("Incorrect")
+        // button changes to red
+        buttonAnswerColor(clickedAnswer,"rgb(210, 4, 45)", "rgb(0,0,0)" );
+        // reset count
+        count = 0;
+        // checks if there are remaining questions left and if so, generates new question
         if (questionsRemaining > 0){
-            setTimeout(getNewQuestion, 750)
+            // get new question after 1 second wait
+            setTimeout(getNewQuestion, 1000);
             }else{
-                scoreRender()
-            }
+            // if not displays score
+            scoreRender();
         }
+     }
 }
 
-
+// function to show the score at the end of the game 
 function scoreRender(){
+    // removes the questions and answer displays
     quiz.classList.add("hide");
+    /// shows the score div
     scoreDiv.style.display = "block";
-    // calculate the amount of question percent answered by the user
-    const scorePerCent =  scoreCorrect * 10
-
-
-    
-                if (scorePerCent >= 80){
-                    scoreMessage = "Excelent!"
-                }else if (scorePerCent >= 60){
-                    scoreMessage = "Nice try!"
-                }else if (scorePerCent >= 40){
-                    scoreMessage =  "Oh well!"
-                }else {
-                    scoreMessage = "Better luck next time!"
-                }
-
-                
-
-                
-                
+    // calculates the score of the user in percent 
+    let scorePerCent =  scoreCorrect * 10;
+    // displays a message based on the player score 
+    if (scorePerCent >= 80){
+        scoreMessage = "Excelent!";
+    }else if (scorePerCent >= 60){
+        scoreMessage = "Nice try!";
+    }else if (scorePerCent >= 40){
+        scoreMessage =  "Not bad!";
+    }else {
+        scoreMessage = "Better luck next time!";
+    }
+    // loads the player score and message to the dom
     scoreDiv.innerHTML += "<p>Your score is "+ scorePerCent +"%.<br>" + scoreMessage +"</p>";
 }
 
-
-
-
-
+// start game button event listener
 start.addEventListener("click", startGame);
 
-/*
-// Function to show the current question. The parameter "x" will be an index number of the questions array.
-function displayQuestion(x){
-    currentQuestion.textContent = questions[x].question;
-}
-
-// Function to show the current question options. The parameter "x" will be an index number of the questions array.
-function displayOptions(x){
-    currentOptionA.textContent = questions[x].A;
-    currentOptionB.textContent = questions[x].B;
-    currentOptionC.textContent = questions[x].C;
-    currentOptionD.textContent = questions[x].D;
-}
-
-
-function playGame(){
-
-
-//Checks if the question has already been used and, if not, it: shows the questions and its four options, 
-//adds the index number to the usedQuestions array and decreases the questionsRemaining by one. 
-    if (usedQuestions.includes(currentIndex)){
-        playGame()
-     }else{
-        displayQuestion(currentIndex)
-        displayOptions(currentIndex)
-        usedQuestions.push(currentIndex)
-        questionsRemaining --
-     }
-
-
-}
-
-
-
-
-
-
-function checkAnswer(clickedAnswer){
-    if (clickedAnswer.id == questions[currentIndex].correct){
-        console.log('Correct')
-         //nextQuestiion()
-         clickedAnswer.style.backgroundColor = "rgb(106, 194, 105)"
-         clickedAnswer.style.color = "rgb(0,0,0)"
-        scoreCorrect +1
-       
-        
-    }else{
-        // nextQuestiion()
-        clickedAnswer.style.backgroundColor = "rgb(210, 4, 45)"
-        clickedAnswer.style.color = "rgb(0,0,0)"
-       
-        console.log("Incorrect")
-       
-    }
-}
-/*
-
-// next question 
-function nextQuestiion(){
-    if (questionsRemaining > 0){
-    currentIndex = Math.floor(Math.random() * questions.length)
-    playGame()
-}
-}
-*/
-//playGame()
-
-//nextQuestiion()
-
-
-
-/*
-while ( questionsRemaining > 0){
-    playGame()
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-let currentQuestion = {};
-let acceptingAnswer = false;
-let score = 0;
-let usedQuestions = [];
-let questionCounter = 0;
-
-const maxQuestions = 10;
-
-
-
-
-
-
-
-function startGame(){
-    questionCounter = 0;
-    score = 0;
-    usedQuestions = [];
-    getNewQuestion()
-}
-
-function getNewQuestion(){
-    
-    const questionIndex = Math.floor(Math.random() * questions.length)
-
-    if (usedQuestions.includes(questionIndex)){
-        getNewQuestion()
-    }else{
-    usedQuestions.push(questionIndex)
-    questionCounter++
-    
-    question.textContent = questions[questionIndex].question;
-    currentOptionA.textContent = questions[questionIndex].A;
-    currentOptionB.textContent = questions[questionIndex].B;
-    currentOptionC.textContent = questions[questionIndex].C;
-    currentOptionD.textContent = questions[questionIndex].D;
-    }
-
-    
-    
-    
-    buttons.addEventListener("click", function() {
-        this.style.backgroundColor = "red";
-        console.log("works")
-      });
-
-
-
-
-
-    }
-
-    
-buttons.forEach
-
-    
-
-
-    startGame()
-
-
-    
-
-*/
