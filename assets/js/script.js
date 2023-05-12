@@ -1,4 +1,5 @@
-// array of questions to be used in the quiz
+
+
 const questions = [
 {
     question: 'The earliest humans first appear in what epoch?',
@@ -313,7 +314,7 @@ function resetButtonColor(){
 }
 
 // set question time and display the time guage
-const questionTime = 30; 
+const questionTime = 5; 
 const gaugeWidth = 300; 
 const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
@@ -330,14 +331,12 @@ function showCounter() {
         // decrease the questions remainng
         questionsRemaining--;
         // checks if there are questions left
-        if (questionsRemaining = 0){
-            // if not, show the score
-            scoreRender();
-        }else{
-            // if so, show new question
+        if (questionsRemaining > 0){
             count = 0;
             getNewQuestion();
-       }
+        }else{
+            scoreRender();
+        }
     }
 }
  

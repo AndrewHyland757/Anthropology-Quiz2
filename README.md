@@ -5,19 +5,19 @@ Antropology Quiz is a site for a unique, fun, and entertaining multiple choice q
 
 
 
-![Screenshot of screen sizes](assets/images/screen-sizes-image.png)
+![Screenshot of screen sizes](assets/images/home-screen.jpg)
 
 
 ## Features
 
 
 ### Start Button
-![Screenshot of quiz start](assets/images/start.png)
+![Screenshot of quiz start](assets/images/start.jpg)
 * Situated at the top of the game area, this provides the user with a clear and easily identifiable way to start the game.
 
 
 ### Game layout and design
-![Screenshot of quiz area](assets/images/quiz.png)
+![Screenshot of quiz area](assets/images/question-screen.jpg)
 * The background image of cave paintings is in line with the topic of the quiz as well as providing a warm colour without being distracting.
 * The green, brown, and purple colours used throughout the website were specifically matched to the background.
 * The game area consists of a question container at the top in a green background.
