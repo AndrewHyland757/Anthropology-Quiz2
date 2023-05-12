@@ -65,7 +65,7 @@ The site was deployed to GitHub pages. The steps to deployment are as follows:
 In the GitHub repository, navigate to the Settings tab.
 From the source section drop-down menu, select the Master Branch
 Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
-The live link can be found here - https://andrewhyland757.github.io/Anthropology-Quiz-1/
+The live link can be found here - https://andrewhyland757.github.io/Anthropology-Quiz2/
 ## Credits
 
 Before I developed the website I watched the following tutorial "Create a Multiple Choice Quiz App Using JavaScript"  by Code Explained on YouTube.
