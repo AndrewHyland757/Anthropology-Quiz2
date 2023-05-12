@@ -314,7 +314,7 @@ function resetButtonColor(){
 }
 
 // set question time and display the time guage
-const questionTime = 5; 
+const questionTime = 30; 
 const gaugeWidth = 300; 
 const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;

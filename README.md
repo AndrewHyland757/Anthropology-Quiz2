@@ -1,7 +1,12 @@
 # Antropology Quiz
 
 
-Antropology Quiz is a site for a unique, fun, and entertaining multiple choice quiz.
+Antropology Quiz is a site for a unique, fun, and entertaining multiple choice quiz involving the subject matter of antropology. <br>
+It was created as a portfolio project for Code Institute’s full-stack web development course curriculum and utilises HTML5, CSS3 and JavaScript.
+
+
+
+
 
 
 
@@ -63,5 +68,6 @@ Once the master branch has been selected, the page will be automatically refresh
 The live link can be found here - https://andrewhyland757.github.io/Anthropology-Quiz-1/
 ## Credits
 
-
-All images are from Shutterstock.
+Before I developed the website I watched the following tutorial "Create a Multiple Choice Quiz App Using JavaScript"  by Code Explained on YouTube.
+It was a great help in understanding the logic behind such a quiz and it especially inspired the time bar feature on my own.
+The background image is from Shutterstock.
