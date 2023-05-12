@@ -283,7 +283,6 @@ const currentOptionA = document.getElementById("choiceA");
 const currentOptionB = document.getElementById("choiceB");
 const currentOptionC = document.getElementById("choiceC");
 const currentOptionD = document.getElementById("choiceD");
-const progress = document.getElementById("progress");
 const buttons = document.getElementsByTagName("button")
 const timeGauge = document.getElementById("timeGauge");
 const scoreDiv = document.getElementById("scoreContainer");
@@ -304,6 +303,7 @@ function buttonAnswerColor(button, backgroundColor, fontColor){
     button.style.backgroundColor =  backgroundColor;             
     button.style.color = fontColor;                           
  }
+
 // function to change the selected button back to a white background after being clicked
 function resetButtonColor(){
     currentOptionA.style.backgroundColor = "rgb(255,255,255)";
@@ -319,7 +319,7 @@ const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
 
 function showCounter() {   
-    // if the counter is less than the question time (30 seconds)                            
+    // counter is less than the question time (30 seconds)                            
     if (count <= questionTime){
         // increase time guage by one unit
         timeGauge.style.width = count * gaugeUnit + "px"; 
@@ -335,19 +335,14 @@ function showCounter() {
             scoreRender();
         }else{
             // if so, show new question
+            count = 0;
             getNewQuestion();
        }
     }
 }
  
-/*
-function showProgress() {
-    for (let qIndex = 0; qIndex <= 10; qIndex++) {
-        progress.innerHTML += "<div class='prog'></div>";
-    }
-}
-*/
-// function to start hte game and display the first queation
+
+// function to start the game and display the first queation
 function startGame(){
     // removes the start button
     start.classList.add("hide");
@@ -361,6 +356,7 @@ function startGame(){
     scoreCorrect = 0;
     // calls the new question
     getNewQuestion();
+
 }
 
 // function to generate a new question
@@ -394,6 +390,7 @@ function getNewQuestion(){
 
 // function to check if answer is correct or not
 function checkAnswer(clickedAnswer){
+    
     // if  answer is correct
     if (clickedAnswer.id == questions[currentIndex].correct){
         // increase score by 1
